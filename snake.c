@@ -229,7 +229,9 @@ void detect_crash()
 
 	Snake *track = head;
 
-	//checking crashing into itself doesn't doesn't work
+	/*
+	checking crashing into itself doesn't doesn't work
+	*/ 
 	// if (track->next != NULL) {
 	// 	track = track->next;
 	// }
@@ -322,8 +324,8 @@ int main()
 	//Start render loop
 
 	move_snake();
-	detect_crash();
 	detect_apple();
+	detect_crash();
 
 	render_grid(renderer, grid_x, grid_y);
 	render_snake(renderer, grid_x, grid_y);
