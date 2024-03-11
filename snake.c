@@ -267,16 +267,24 @@ int main()
 							quit = true;
 							break;
 						case SDLK_UP:
-							head->dir = SNAKE_UP;
+							if (head->dir != SNAKE_DOWN) {
+								head->dir = SNAKE_UP;
+							}
 							break;
 						case SDLK_DOWN:
-							head->dir = SNAKE_DOWN;
+							if (head->dir != SNAKE_UP) {
+								head->dir = SNAKE_DOWN;
+							}
 							break;
 						case SDLK_LEFT:
-							head->dir = SNAKE_LEFT;
+							if (head->dir != SNAKE_RIGHT) {
+								head->dir = SNAKE_LEFT;
+							}
 							break;
 						case SDLK_RIGHT:
-							head->dir = SNAKE_RIGHT;
+							if (head->dir != SNAKE_LEFT) {
+								head->dir = SNAKE_RIGHT;
+							}
 							break;																				
 					}
 					break;
