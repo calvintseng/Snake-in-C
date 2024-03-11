@@ -2,13 +2,6 @@
 #include "apple.h"
 #include "config.h"
 
-enum {
-	SNAKE_UP,
-	SNAKE_DOWN,
-	SNAKE_LEFT,
-	SNAKE_RIGHT,
-};
-
 apple Apple;
 typedef struct snake Snake;
 
@@ -316,7 +309,7 @@ int main()
 	SDL_SetRenderDrawColor(renderer, 0x11, 0x11, 0x11, 255);
 	SDL_RenderPresent(renderer);
 
-	SDL_Delay(100);
+	SDL_Delay(REFRESH_RATE);
 	
 	}
 

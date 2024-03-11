@@ -8,6 +8,13 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 
+enum {
+	SNAKE_UP,
+	SNAKE_DOWN,
+	SNAKE_LEFT,
+	SNAKE_RIGHT,
+};
+
 typedef struct snake {
 	int x;
 	int y;

@@ -9,4 +9,6 @@
 #define GRID_SIZE 20
 #define GRID_DIM 500
 
+#define REFRESH_RATE 100
+
 #endif
