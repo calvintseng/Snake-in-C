@@ -8,9 +8,6 @@ Node* init_node(int x, int y) {
     return newNode;
 }
 
-/* 
-Don't think I need this
-*/
 void init_deque(Deque* deque) {
     deque->head = NULL;
     deque->tail = NULL;
