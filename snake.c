@@ -1,4 +1,5 @@
 #include "snake.h"
+#include "apple.h"
 
 #define WINDOW_X 0
 #define WINDOW_Y 0
@@ -15,21 +16,7 @@ enum {
 	SNAKE_RIGHT,
 };
 
-typedef struct {
-	int x;
-	int y;
-
-} apple;
-
 apple Apple;
-
-struct snake {
-	int x;
-	int y;
-	int dir;
-
-	struct snake *next;
-};
 typedef struct snake Snake;
 
 Snake *head;
@@ -227,7 +214,7 @@ void detect_crash()
 		reset_snake();
 	}
 
-	Snake *track = head;
+	//Snake *track = head;
 
 	/*
 	checking crashing into itself doesn't doesn't work
