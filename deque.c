@@ -8,24 +8,26 @@ Node* init_node(int x, int y) {
     return newNode;
 }
 
-void init_list(Deque* deque) {
+Deque* init_deque() {
+    Deque* deque = malloc(sizeof(Deque));
     deque->head = NULL;
     deque->tail = NULL;
+    return deque;
 }
 
 void push_back(Deque* deque, int x, int y) {
-    Node* newNode = initNode(x, y);
+    Node* newNode = init_node(x, y);
     newNode->prev = deque->tail;
     if (deque->tail) {
         deque->tail->next = newNode;
     } else {
-        deque_head = newNode;
+        deque->head = newNode;
     }
     deque->tail = newNode;
 }
 
 void push_front(Deque* deque, int x, int y) {
-    Node* newNode = initNode(x, y);
+    Node* newNode = init_node(x, y);
     newNode->next = deque->head;
     newNode->prev = NULL;
     if (deque->head) {
@@ -45,7 +47,7 @@ void pop_front(Deque* deque) {
         return;
     }
     Node* temp = deque->head;
-    deque->head = list->head->next;
+    deque->head = deque->head->next;
     if (deque->head) {
         deque->head->prev = NULL;
     } else {
