@@ -20,7 +20,7 @@ void main() {
         }
         if (pressed == KEY_RIGHT) {
             dirX = 1;
-            dirX = 0;
+            dirY = 0;
         }
         if (pressed == KEY_UP) {
             dirX = 0;
@@ -35,7 +35,11 @@ void main() {
         erase();
         mvaddstr(posY, posX, "*");
         mvaddstr(foodY, foodX, "&");
-        usleep(100000);
+        if (foodX == posX && foodY == posY) {
+		foodX = rand() % 20;
+		foodY = rand() % 20;
+	}
+	usleep(100000);
     }
     endwin();
 }
