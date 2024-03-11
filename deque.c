@@ -11,13 +11,10 @@ Node* init_node(int x, int y) {
 /* 
 Don't think I need this
 */
-
-// Deque* init_deque() {
-//     Deque* deque = malloc(sizeof(Deque));
-//     deque->head = NULL;
-//     deque->tail = NULL;
-//     return deque;
-// }
+void init_deque(Deque* deque) {
+    deque->head = NULL;
+    deque->tail = NULL;
+}
 
 void push_back(Deque* deque, int x, int y) {
     Node* newNode = init_node(x, y);
@@ -73,4 +70,15 @@ void pop_back(Deque* deque) {
         deque->head = NULL;
     }
     free(temp);
+}
+
+void clear_deque(Deque* deque) {
+    Node* current = deque->head;
+    while (current != NULL) {
+        Node* next = current->next;
+        free(current);
+        current = next;
+    }
+    deque->head = NULL;
+    deque->tail = NULL;
 }

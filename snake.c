@@ -9,7 +9,8 @@ typedef struct snake Snake;
 Snake *head;
 Snake *tail;
 
-Deque *deque;
+Deque my_deque;
+//my_deque = malloc(sizeof(Deque));
 
 void init_snake() 
 {
@@ -21,6 +22,8 @@ void init_snake()
 
 	head = new;
 	tail = new;
+	// printf("x = %d\n", new->x);
+	//push_back(my_deque, new->x, new->y);
 
 	return;
 }
@@ -107,6 +110,8 @@ void move_snake()
 
 void reset_snake()
 {
+	//clear_deque(deque);
+
 	Snake *track = head;
 	Snake *temp;
 
