@@ -1,12 +1,16 @@
 #include "snake.h"
 #include "apple.h"
 #include "config.h"
+#include "deque.h"
 
 extern apple Apple;
 
 typedef struct snake Snake;
 Snake *head;
 Snake *tail;
+
+Deque my_deque;
+//my_deque = malloc(sizeof(Deque));
 
 void init_snake() 
 {
@@ -18,6 +22,8 @@ void init_snake()
 
 	head = new;
 	tail = new;
+	// printf("x = %d\n", new->x);
+	//push_back(my_deque, new->x, new->y);
 
 	return;
 }
@@ -99,12 +105,13 @@ void move_snake()
 		prev_y = save_y;
 		prev_dir = save_dir;
 	}
-
 	return;
 }
 
 void reset_snake()
 {
+	//clear_deque(deque);
+
 	Snake *track = head;
 	Snake *temp;
 
@@ -260,16 +267,24 @@ int main()
 							quit = true;
 							break;
 						case SDLK_UP:
-							head->dir = SNAKE_UP;
+							if (head->dir != SNAKE_DOWN) {
+								head->dir = SNAKE_UP;
+							}
 							break;
 						case SDLK_DOWN:
-							head->dir = SNAKE_DOWN;
+							if (head->dir != SNAKE_UP) {
+								head->dir = SNAKE_DOWN;
+							}
 							break;
 						case SDLK_LEFT:
-							head->dir = SNAKE_LEFT;
+							if (head->dir != SNAKE_RIGHT) {
+								head->dir = SNAKE_LEFT;
+							}
 							break;
 						case SDLK_RIGHT:
-							head->dir = SNAKE_RIGHT;
+							if (head->dir != SNAKE_LEFT) {
+								head->dir = SNAKE_RIGHT;
+							}
 							break;																				
 					}
 					break;

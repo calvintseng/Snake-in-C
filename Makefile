@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra
 INCLUDES = -I/usr/include/SDL2/
 LIBS = -lSDL2
-SRCS = snake.c apple.c
+SRCS = snake.c apple.c deque.c unordered_map.c
 OBJS = $(SRCS:.c=.o)
 MAIN = snake
 
