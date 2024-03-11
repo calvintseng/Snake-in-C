@@ -1,37 +1,10 @@
 #include "snake.h"
+#include "apple.h"
+#include "config.h"
 
-#define WINDOW_X 0
-#define WINDOW_Y 0
-#define WINDOW_WIDTH 1000
-#define WINDOW_HEIGHT 1000
+extern apple Apple;
 
-#define GRID_SIZE 20
-#define GRID_DIM 500
-
-enum {
-	SNAKE_UP,
-	SNAKE_DOWN,
-	SNAKE_LEFT,
-	SNAKE_RIGHT,
-};
-
-typedef struct {
-	int x;
-	int y;
-
-} apple;
-
-apple Apple;
-
-struct snake {
-	int x;
-	int y;
-	int dir;
-
-	struct snake *next;
-};
 typedef struct snake Snake;
-
 Snake *head;
 Snake *tail;
 
@@ -86,7 +59,6 @@ void increase_snake()
 
 void move_snake() 
 {
-
 	int prev_x = head->x;
 	int prev_y = head->y;
 	int prev_dir = head->dir;
@@ -192,12 +164,6 @@ void render_grid(SDL_Renderer *renderer, int x, int y)
 	return;
 }
 
-void gen_apple() 
-{
-	Apple.x = rand() % GRID_SIZE;
-	Apple.y = rand() % GRID_SIZE;
-}
-
 void render_apple(SDL_Renderer *renderer, int x, int y) 
 {
 	SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 255);
@@ -213,21 +179,13 @@ void render_apple(SDL_Renderer *renderer, int x, int y)
 	SDL_RenderFillRect(renderer, &app);
 }
 
-void detect_apple() 
-{
-	if (head->x == Apple.x && head->y == Apple.y) {
-		gen_apple();
-		increase_snake();
-	}
-}
-
 void detect_crash()
 {
 	if (head->x < 0 || head->x >= GRID_SIZE || head->y < 0 || head->y >= GRID_SIZE) {
 		reset_snake();
 	}
 
-	Snake *track = head;
+	//Snake *track = head;
 
 	/*
 	checking crashing into itself doesn't doesn't work
@@ -255,7 +213,6 @@ int main()
 	increase_snake();
 
 	gen_apple();
-
 
 	SDL_Window *window;
 	SDL_Renderer *renderer;
@@ -336,7 +293,7 @@ int main()
 	SDL_SetRenderDrawColor(renderer, 0x11, 0x11, 0x11, 255);
 	SDL_RenderPresent(renderer);
 
-	SDL_Delay(100);
+	SDL_Delay(REFRESH_RATE);
 	
 	}
 
