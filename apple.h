@@ -6,4 +6,7 @@ typedef struct {
 	int y;
 } apple;
 
+void gen_apple();
+void detect_apple();
+
 #endif

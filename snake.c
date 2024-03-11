@@ -59,7 +59,6 @@ void increase_snake()
 
 void move_snake() 
 {
-
 	int prev_x = head->x;
 	int prev_y = head->y;
 	int prev_dir = head->dir;
@@ -165,12 +164,6 @@ void render_grid(SDL_Renderer *renderer, int x, int y)
 	return;
 }
 
-void gen_apple() 
-{
-	Apple.x = rand() % GRID_SIZE;
-	Apple.y = rand() % GRID_SIZE;
-}
-
 void render_apple(SDL_Renderer *renderer, int x, int y) 
 {
 	SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 255);
@@ -184,14 +177,6 @@ void render_apple(SDL_Renderer *renderer, int x, int y)
 	app.y = y + Apple.y * apple_size;
 
 	SDL_RenderFillRect(renderer, &app);
-}
-
-void detect_apple() 
-{
-	if (head->x == Apple.x && head->y == Apple.y) {
-		gen_apple();
-		increase_snake();
-	}
 }
 
 void detect_crash()
@@ -228,7 +213,6 @@ int main()
 	increase_snake();
 
 	gen_apple();
-
 
 	SDL_Window *window;
 	SDL_Renderer *renderer;
