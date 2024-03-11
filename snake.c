@@ -2,9 +2,9 @@
 #include "apple.h"
 #include "config.h"
 
-apple Apple;
-typedef struct snake Snake;
+extern apple Apple;
 
+typedef struct snake Snake;
 Snake *head;
 Snake *tail;
 
