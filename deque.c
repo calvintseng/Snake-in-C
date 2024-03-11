@@ -8,12 +8,16 @@ Node* init_node(int x, int y) {
     return newNode;
 }
 
-Deque* init_deque() {
-    Deque* deque = malloc(sizeof(Deque));
-    deque->head = NULL;
-    deque->tail = NULL;
-    return deque;
-}
+/* 
+Don't think I need this
+*/
+
+// Deque* init_deque() {
+//     Deque* deque = malloc(sizeof(Deque));
+//     deque->head = NULL;
+//     deque->tail = NULL;
+//     return deque;
+// }
 
 void push_back(Deque* deque, int x, int y) {
     Node* newNode = init_node(x, y);

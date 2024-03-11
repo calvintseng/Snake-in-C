@@ -1,12 +1,15 @@
 #include "snake.h"
 #include "apple.h"
 #include "config.h"
+#include "deque.h"
 
 extern apple Apple;
 
 typedef struct snake Snake;
 Snake *head;
 Snake *tail;
+
+Deque *deque;
 
 void init_snake() 
 {
@@ -99,7 +102,6 @@ void move_snake()
 		prev_y = save_y;
 		prev_dir = save_dir;
 	}
-
 	return;
 }
 

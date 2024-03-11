@@ -1,5 +1,5 @@
-#ifndef deque_file
-#define deque_file
+#ifndef DEQUE_H
+#define DEQUE_H
 
 typedef struct Node {
     int x;
