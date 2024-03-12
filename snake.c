@@ -14,8 +14,6 @@ Deque my_deque;
 void init_snake() 
 {
 	Snake *new = malloc(sizeof(Snake));
-	// new->x = rand() % (GRID_SIZE / 2) + (GRID_SIZE / 4); 
-	// new->y = rand() % (GRID_SIZE / 2) + (GRID_SIZE / 4);
 	new->x = GRID_SIZE / 2; 
 	new->y = GRID_SIZE / 2;
 	new->dir = SNAKE_UP;
@@ -189,10 +187,6 @@ void detect_crash()
 		reset_snake();
 	}
 
-
-	/*
-	checking crashing into itself doesn't doesn't work
-	*/ 
 	Snake *track = head->next;
 
 	while (track != NULL) {
@@ -215,7 +209,6 @@ int main()
 	increase_snake();
 	increase_snake();
 	
-
 	gen_apple();
 
 	SDL_Window *window;
@@ -290,6 +283,7 @@ int main()
 	
 
 	SDL_RenderClear(renderer);
+
 	//Start render loop
 
 	move_snake();
@@ -306,7 +300,6 @@ int main()
 	SDL_RenderPresent(renderer);
 
 	SDL_Delay(REFRESH_RATE);
-	
 	}
 
 	SDL_DestroyRenderer(renderer);
