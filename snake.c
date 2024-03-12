@@ -14,8 +14,10 @@ Deque my_deque;
 void init_snake() 
 {
 	Snake *new = malloc(sizeof(Snake));
-	new->x = rand() % (GRID_SIZE / 2) + (GRID_SIZE / 4); 
-	new->y = rand() % (GRID_SIZE / 2) + (GRID_SIZE / 4);
+	// new->x = rand() % (GRID_SIZE / 2) + (GRID_SIZE / 4); 
+	// new->y = rand() % (GRID_SIZE / 2) + (GRID_SIZE / 4);
+	new->x = GRID_SIZE / 2; 
+	new->y = GRID_SIZE / 2;
 	new->dir = SNAKE_UP;
 	new->next = NULL;
 
@@ -38,17 +40,17 @@ void increase_snake()
 			new->y = tail->y-1;
 			break;
 		case SNAKE_LEFT:
-			new->x = tail->x + 1;
+			new->x = tail->x+1;
 			new->y = tail->y;
 			break;
 		case SNAKE_RIGHT:
-			new->x = tail->x - 1;
+			new->x = tail->x-1;
 			new->y = tail->y;
 			break;
 	}
 
 	new->x = tail->x;
-	new->y = tail->y-1;
+	new->y = tail->y+1;
 	new->dir = tail->dir;
 
 	new->next = NULL;
@@ -116,6 +118,7 @@ void reset_snake()
 	}
 
 	init_snake();
+	increase_snake();
 	increase_snake();
 	increase_snake();
 
@@ -190,17 +193,15 @@ void detect_crash()
 	/*
 	checking crashing into itself doesn't doesn't work
 	*/ 
-	// Snake *track = head;
-	// if (track->next != NULL) {
-	// 	track = track->next;
-	// }
+	Snake *track = head->next;
 
-	// while (track != NULL) {
-	// 	if (track->x == head->x && track->y == head->y) {
-	// 		reset_snake();
-	// 	}
-	// 	track = track->next;
-	// }
+	while (track != NULL) {
+		if (track->x == head->x && track->y == head->y) {
+			reset_snake();
+			break;
+		}
+		track = track->next;
+	}
 
 	return;
 }
@@ -212,6 +213,8 @@ int main()
 	init_snake();
 	increase_snake();
 	increase_snake();
+	increase_snake();
+	
 
 	gen_apple();
 
